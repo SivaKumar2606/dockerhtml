@@ -21,13 +21,13 @@ pipeline {
             } 
             stage('Deploy to Docker-Host') {
                 steps {     
-                    sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name myweb2 -p 9000:80  sivakumar2606/pipeline2:v1' 
+                    sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name myweb2 -p 9100:80  sivakumar2606/pipeline2:v1' 
                 }
             }
             stage('Check Reachability') {
                 steps {
                     sh 'sleep 10s'
-                    sh 'curl http://40.117.103.166:9001'
+                    sh 'curl http://40.117.103.166:9100'
                 }
             }
        }
