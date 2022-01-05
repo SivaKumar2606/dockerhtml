@@ -16,12 +16,12 @@ pipeline {
             }
             stage('Push to Hub') {
                 steps {
-                sh 'docker push sivakumar2606/pipeline2:v1'
+                    sh 'docker push sivakumar2606/pipeline2:v1'
                 }
             } 
             stage('Deploy to Docker-Host') {
                 steps {     
-                sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name myweb2 -p 9000:80  sivakumar2606/pipeline2:v1' 
+                    sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name myweb2 -p 9000:80  sivakumar2606/pipeline2:v1' 
                 }
             }
             stage('Check Reachability') {
