@@ -21,6 +21,7 @@ pipeline {
             } 
             stage('Deploy to Docker-Host') {
                 steps {     
+                    sh 'docker -H tcp://10.0.0.5:2375 stop myweb2'
                     sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name myweb2 -p 9100:80  sivakumar2606/pipeline2:v1' 
                 }
             }
