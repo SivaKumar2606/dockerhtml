@@ -11,18 +11,18 @@ pipeline {
                 steps {      
                     sh 'cd /var/lib/jenkins/workspace/pipeline2'
                     sh 'cp /var/lib/jenkins/workspace/pipeline2/dockerhtml/* /var/lib/jenkins/workspace/pipeline2'
-                    sh 'docker build -t sivakumar2606/pipeline2:v1 .'
+                    sh 'docker build -t sivakumar2606/pipeline2:v2 .'
                 }
             }
             stage('Push to Hub') {
                 steps {
-                    sh 'docker push sivakumar2606/pipeline2:v1'
+                    sh 'docker push sivakumar2606/pipeline2:v2'
                 }
             } 
             stage('Deploy to Docker-Host') {
                 steps {     
                     sh 'docker -H tcp://10.0.0.5:2375 stop myweb2'
-                    sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name myweb2 -p 9100:80  sivakumar2606/pipeline2:v1' 
+                    sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name myweb2 -p 9100:80  sivakumar2606/pipeline2:v2' 
                 }
             }
             stage('Check Reachability') {
