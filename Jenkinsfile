@@ -1,6 +1,3 @@
-#!/usr/bin/groovy
-# Class 5
-
 pipeline {
     agent any
         stages {
