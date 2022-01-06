@@ -29,7 +29,7 @@ pipeline {
             stage('Check Reachability') {
                 steps {
                     sh 'sleep 10s'
-                    sh 'curl http://13.90.157.196:70000'
+                    sh 'curl http://13.90.157.196:7000'
                 }
             }
        }
