@@ -1,9 +1,5 @@
 pipeline {
-    agent {
-        node {
-            label 'prod'
-        }
-    }
+    agent any
         stages {
             stage('Clone Repo') {
                 steps {
