@@ -9,9 +9,8 @@ pipeline {
             }
             stage('Build-Image') {
                 steps {      
-                    sh 'cd /var/lib/jenkins/workspace/dockerhtml_dev'
-                    sh 'cp /var/lib/jenkins/workspace/dockerhtml_dev/dockerhtml/* /var/lib/jenkins/workspace/dockerhtml_dev'
-                    sh 'docker build -t sivakumar2606/dockerhtml_dev:dev .'
+                    sh 'cd /var/lib/jenkins/workspace/dockerhtml'
+                    sh 'docker build -t sivakumar2606/dockerhtml:dev .'
                 }
             }
             stage('Push to Hub') {
