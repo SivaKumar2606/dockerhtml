@@ -21,14 +21,14 @@ pipeline {
             } 
             stage('Deploy to Docker-Host') {
                 steps {     
-                    sh 'docker -H tcp://10.0.0.5:2375 stop myweb2'
-                    sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name myweb2 -p 9100:80  sivakumar2606/multiblue:main' 
+                    sh 'docker -H tcp://10.0.0.5:2375 stop mymain'
+                    sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name mymain -p 9100:80  sivakumar2606/multiblue:main' 
                 }
             }
             stage('Check Reachability') {
                 steps {
                     sh 'sleep 10s'
-                    sh 'curl http://40.117.103.166:9100'
+                    sh 'curl http://13.90.157.196:9100'
                 }
             }
        }
