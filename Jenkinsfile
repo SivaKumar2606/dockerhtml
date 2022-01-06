@@ -9,20 +9,20 @@ pipeline {
             }
             stage('Build-Image') {
                 steps {      
-                    sh 'cd /var/lib/jenkins/workspace/multiblue'
-                    sh 'cp /var/lib/jenkins/workspace/multiblue/dockerhtml/* /var/lib/jenkins/workspace/multiblue'
-                    sh 'docker build -t sivakumar2606/multiblue:dev .'
+                    sh 'cd /var/lib/jenkins/workspace/dockerhtml_dev'
+                    sh 'cp /var/lib/jenkins/workspace/dockerhtml_dev/dockerhtml/* /var/lib/jenkins/workspace/dockerhtml_dev'
+                    sh 'docker build -t sivakumar2606/dockerhtml_dev:dev .'
                 }
             }
             stage('Push to Hub') {
                 steps {
-                    sh 'docker push sivakumar2606/multiblue:dev'
+                    sh 'docker push sivakumar2606/dockerhtml_dev:dev'
                 }
             } 
             stage('Deploy to Docker-Host') {
                 steps {     
                     sh 'docker -H tcp://10.0.0.5:2375 stop mydevweb'
-                    sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name mydevweb -p 9200:80  sivakumar2606/multiblue:dev' 
+                    sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name mydevweb -p 9200:80  sivakumar2606/dockerhtml_dev:dev' 
                 }
             }
             stage('Check Reachability') {
