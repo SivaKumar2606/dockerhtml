@@ -22,7 +22,7 @@ pipeline {
             } 
             stage('Deploy to Docker-Host') {
                 steps {     
-                    sh 'docker -H tcp://10.0.0.5:2375 stop mydevweb'
+                    
                     sh 'docker -H tcp://10.0.0.5:2375 run --rm -dit --name mydevweb -p 8000:80  sivakumar2606/dockerhtml:dev' 
                 }
             }
