@@ -9,8 +9,9 @@ pipeline {
             }
             stage('Build-Image') {
                 steps {      
-                    sh 'cd /var/lib/jenkins/workspace/multibranch'
-                    sh 'cp /var/lib/jenkins/workspace/multibranch/dockerhtml/* /var/lib/jenkins/workspace/multibranch'
+                    sh 'cd /var/lib/jenkins/workspace/multibranch_prod'
+                    sh 'cp /var/lib/jenkins/workspace/multibranch_prod/dockerhtml/* /var/lib/jenkins/workspace/multibranch_prod'
+                    sh 'rm -rf dockerhtml'
                     sh 'docker build -t sivakumar2606/dockerhtml:prod .'
                 }
             }
