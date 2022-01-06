@@ -9,8 +9,7 @@ pipeline {
             }
             stage('Build-Image') {
                 steps {      
-                    sh 'cd /var/lib/jenkins/workspace/dockerhtml_main'
-                    sh 'cp /var/lib/jenkins/workspace/dockerhtml_main/dockerhtml/* /var/lib/jenkins/workspace/dockerhtml_main'
+                    sh 'cd /var/lib/jenkins/workspace/dockerhtml'
                     sh 'docker build -t sivakumar2606/dockerhtml_main:main .'
                 }
             }
