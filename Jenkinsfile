@@ -8,6 +8,9 @@ pipeline {
                 }
             }
             stage('Build-Image') {
+                when {
+                    branch 'main'
+                }
                 steps {      
                     sh 'cd /var/lib/jenkins/workspace/multibranch_main'
                     sh 'cp /var/lib/jenkins/workspace/multibranch_main/dockerhtml/* /var/lib/jenkins/workspace/multibranch_main'
