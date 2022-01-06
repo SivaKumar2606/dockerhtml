@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    aagent {
+        node {
+            label 'dev'
+        }
+    }
         stages {
             stage('Clone Repo') {
                 steps {
